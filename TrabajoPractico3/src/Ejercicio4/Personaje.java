@@ -1,6 +1,6 @@
 package Ejercicio4;
 
-public abstract class Personaje {
+public abstract class Personaje { //SUPER CLASE
 	private Integer vida, nivelAtaque, nivelDefensa;
 
 	public Integer atacar() {
@@ -29,7 +29,7 @@ public abstract class Personaje {
 		return nivelDefensa;
 	}
 
-	public void setNivelDefenza(Integer nivelDefenza) {
+	public void setNivelDefensa(Integer nivelDefensa) {
 		this.nivelDefensa = nivelDefensa;
 	}
 }

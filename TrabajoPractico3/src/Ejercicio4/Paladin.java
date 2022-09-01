@@ -2,22 +2,31 @@ package Ejercicio4;
 
 import java.util.Random;
 
-public class Paladin extends Personaje {
+public abstract class Paladin extends Personaje { /* SUB CLASE (( se extiende a Naruto)) */
 	public Paladin(Integer ataque, Integer defensa) {
-		super();
-		super.setNivelAtaque(ataque);
-		this.setNivelAtaque(defensa);
+		//super();
+		this.setNivelAtaque(ataque);
+		this.setNivelDefensa(defensa);
 	}
 
-	public void defender(Integer puntos) {
+	public void defender(Integer puntos) { // OBLIGACION DE IMPLEMENTAR
 
 		Random rnd = new Random();
 		if (rnd.nextBoolean()) {
-			if (this.getNivelDefensa() < puntos) {
-				this.setVida(this.getVida() - (puntos - this.getNivelDefensa()));
+				this.setVida((this.getVida() - ( this.getNivelDefensa() - puntos)));
 			} else {
-
+				this.setVida(this.getVida() - puntos);
 			}
+		}
+	
+
+	public void ataque(Integer puntos) { // OBLIGACION DE IMPLEMENTAR
+
+		Random rnd = new Random();
+		if (rnd.nextBoolean()) {
+			this.setNivelAtaque(puntos);
+		} else {
+			this.setNivelAtaque(puntos + 20);
 		}
 	}
 }
