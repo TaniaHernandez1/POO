@@ -20,6 +20,7 @@ import javax.swing.UIManager;
 import java.awt.Cursor;
 import java.awt.Component;
 import java.awt.Point;
+import java.awt.Dimension;
 
 public class VistaMenu extends JFrame {
 
@@ -51,7 +52,6 @@ public class VistaMenu extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(0, 0, 800, 410);
 		contentPane = new JPanel();
-		contentPane.setFocusable(false);
 		contentPane.setForeground(new Color(204, 0, 51));
 		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -59,6 +59,7 @@ public class VistaMenu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton opTurnos = new JButton("Turnos");
+		opTurnos.setForeground(Color.BLACK);
 		opTurnos.setBorder(null);
 		opTurnos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -71,6 +72,10 @@ public class VistaMenu extends JFrame {
 		contentPane.add(opTurnos);
 		
 		JButton opProfesional = new JButton("Profesional");
+		opProfesional.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		opProfesional.setBorder(null);
 		opProfesional.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		opProfesional.setForeground(Color.BLACK);
