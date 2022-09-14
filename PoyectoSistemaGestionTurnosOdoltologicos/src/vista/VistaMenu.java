@@ -21,6 +21,12 @@ import java.awt.Cursor;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import java.awt.ComponentOrientation;
+import javax.swing.DebugGraphics;
 
 public class VistaMenu extends JFrame {
 
@@ -46,11 +52,10 @@ public class VistaMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public VistaMenu() {
+		setBackground(Color.WHITE);
 		setLocationByPlatform(true);
-		setUndecorated(true);
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 800, 410);
+		setBounds(0, 0, 800, 453);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(204, 0, 51));
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -59,12 +64,34 @@ public class VistaMenu extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton opTurnos = new JButton("Turnos");
-		opTurnos.setForeground(Color.BLACK);
+		opTurnos.setBackground(new Color(0, 140, 140));
+		opTurnos.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				opTurnos.setBackground(new Color(0,160,160));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				opTurnos.setBackground(new Color(0, 140, 140));
+			}
+		});
+		opTurnos.setForeground(new Color(204, 255, 255));
 		opTurnos.setBorder(null);
 		opTurnos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
+		JLabel iconTurnos = new JLabel("");
+		iconTurnos.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		iconTurnos.setBorder(null);
+		iconTurnos.setAlignmentX(Component.CENTER_ALIGNMENT);
+		iconTurnos.setHorizontalAlignment(SwingConstants.CENTER);
+		iconTurnos.setHorizontalTextPosition(SwingConstants.CENTER);
+		iconTurnos.setSize(new Dimension(10, 10));
+		iconTurnos.setIcon(new ImageIcon(VistaMenu.class.getResource("/img/calendar2.png")));
+		iconTurnos.setBounds(80,80, 80, 80);
+		contentPane.add(iconTurnos);
 		opTurnos.setAlignmentX(Component.CENTER_ALIGNMENT);
 		opTurnos.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		opTurnos.setFont(new Font("Sitka Banner", Font.BOLD, 20));
@@ -72,38 +99,59 @@ public class VistaMenu extends JFrame {
 		contentPane.add(opTurnos);
 		
 		JButton opProfesional = new JButton("Profesional");
+		opProfesional.setBackground(new Color(0, 140, 140));
+		opProfesional.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				opProfesional.setBackground(new Color(0, 140, 140));
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				opProfesional.setBackground(new Color(0,160,160));
+			}
+		});
 		opProfesional.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		opProfesional.setBorder(null);
 		opProfesional.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		opProfesional.setForeground(Color.BLACK);
+		opProfesional.setForeground(new Color(204, 255, 255));
 		opProfesional.setFont(new Font("Sitka Banner", Font.BOLD, 20));
 		opProfesional.setBounds(10, 105, 308, 100);
 		contentPane.add(opProfesional);
 		
 		JButton opPacientes = new JButton("Pacientes");
+		opPacientes.setForeground(new Color(204, 255, 255));
+		opPacientes.setBackground(new Color(0, 140, 140));
+		opPacientes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				opPacientes.setBackground(new Color(0,160,160));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				opPacientes.setBackground(new Color(0, 140, 140));
+			}
+		});
 		opPacientes.setBorder(null);
 		opPacientes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		opPacientes.setFont(new Font("Sitka Banner", Font.BOLD, 20));
 		opPacientes.setBounds(10, 205, 308, 100);
 		contentPane.add(opPacientes);
 		
-		JButton opInformes = new JButton("Informes");
-		opInformes.setBorder(null);
-		opInformes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		opInformes.setForeground(new Color(0, 0, 0));
-		opInformes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+		Button btnCerrarSesion = new Button("Cerrar sesión");
+		btnCerrarSesion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnCerrarSesion.setBackground (new Color(228,228,228));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				btnCerrarSesion.setBackground(Color.WHITE);
 			}
 		});
-		opInformes.setBackground(SystemColor.info);
-		opInformes.setFont(new Font("Sitka Banner", Font.BOLD, 20));
-		opInformes.setBounds(10, 305, 308, 100);
-		contentPane.add(opInformes);
-		
-		Button btnCerrarSesion = new Button("Cerrar sesión");
 		btnCerrarSesion.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCerrarSesion.setForeground(new Color(0, 0, 0));
 		btnCerrarSesion.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -115,5 +163,23 @@ public class VistaMenu extends JFrame {
 		btnCerrarSesion.setActionCommand("\r\n");
 		btnCerrarSesion.setBounds(513, 360, 100, 30);
 		contentPane.add(btnCerrarSesion);
+		
+		JButton opInformes = new JButton("Informes");
+		opInformes.setForeground(new Color(204, 255, 255));
+		opInformes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				opInformes.setBackground(new Color(0,160,160));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				opInformes.setBackground(new Color(0, 140, 140));
+			}
+		});
+		opInformes.setFont(new Font("Sitka Banner", Font.BOLD, 20));
+		opInformes.setBorder(null);
+		opInformes.setBackground(new Color(0, 140, 140));
+		opInformes.setBounds(10, 305, 308, 100);
+		contentPane.add(opInformes);
 	}
 }
